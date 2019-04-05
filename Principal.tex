@@ -1,0 +1,198 @@
+\documentclass[
+	12pt,
+	openright,
+	twoside,
+	a4paper,
+	oneside,
+	brazil,
+	%chapter=TITLE,
+	%section=TITLE,
+	%subsection=TITLE,
+	sumario = tradicional
+]{abntex2}
+
+\usepackage[font=small,format=plain,labelfont=bf,up,margin=1cm]{caption}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[pdftex]{graphicx}
+\usepackage{subfig}
+\usepackage{float}
+\usepackage[alf,abnt-etal-list=0, abnt-etal-cite=2, abnt-etal-text=it, abnt-repeated-author-omit=yes, abnt-emphasize=bf]{abntex2cite}
+% alf - exibi as referencias em ordem alfabetica.
+% abnt-etal-list=0 - foi utilizado para não permitir o uso de et al. nas referências.
+% abnt-etal-cite=2 - mostra que pode ser feita a citação de até 2 autores no texto. Se numa referência existem 3 autores, usa-se evidentemente o et al., com a citação do primeiro autor.
+% abnt-etal-text=it - exibi a escrita do et al nas referencias em italico.
+
+\usepackage[table,xcdraw]{xcolor} % pacote para colorir células da tabela
+\renewcommand{\arraystretch}{1.2} % espaçamento da linha na tabela
+
+\usepackage{indentfirst} % justificar automaticamente os parágrafos
+\usepackage{lscape}
+\usepackage{import}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{lastpage}			% Usado pela Ficha catalográfica
+\usepackage{color}				% Controle das cores
+\usepackage[table]{xcolor}      % cores nas células das tabelas
+\usepackage{microtype} 			% para melhorias de justificação
+
+\usepackage{lipsum}             % gerador de lero lero
+
+% Acrescentado para gerar as tabelas 22/07/2017
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\usepackage{longtable}
+\usepackage{empheq}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{pdfpages} %adicionar arquivos em pdf
+
+\newcommand*\widefbox[1]{\fbox{\hspace{2em}#1\hspace{2em}}}
+\newcommand{\head}[1]{\textnormal{\textbf{#1}}}
+\newcolumntype{C}[2]{>{\centering\vspace{#2}\let\newline\\\arraybackslash\hspace{0pt}\vspace{#2}}m{#1}}
+
+% Préambulo --------------------------------------------------------------------------------------------------------------------------
+
+\newcommand{\universidade}{Universidade Federal do Vale do São Francisco }
+
+%%%%%%%%%%%%%%%% DADOS PARA CAPA E CONTRA CAPA %%%%%%%%%%%%%%%% 
+\newcommand{\curso}{Inserir curso}
+\newcommand{\graduacao}{Curso de Graduação em \curso}
+\newcommand{\bancaum}{Avaliador 1\\ Faculdade}
+\newcommand{\bancadois}{Avaliador 2\\ Faculdade}
+\newcommand{\bibliotecario}{Inserir Bibliotecário}
+\newcommand{\cpf}{000.000.000-00}
+\newcommand{\siglaColegiado}{CENEL}
+\newcommand{\siglaUniversidade}{UNIVASF}
+\newcommand{\periodo}{2018.1}
+\newcommand{\tipodetrabalho}{PROJETO PRELIMINAR}
+
+\autor{Inserir seu nome}
+
+\titulo{Inserir título}
+
+\tipotrabalho{Trabalho de Conclusão de Curso}
+\orientador[Orientador: Dr.]{Inserir nome do orientador}
+%\coorientador[Coorientador: Dr.]{Inserir nome do coorientador}
+\instituicao{\universidade \par \curso}
+\local{Juazeiro - BA}
+\data{2018}
+
+\preambulo{
+	Pré-projeto de Trabalho de Conclusão de Curso apresentado como requisito parcial para obtenção do título de Bacharel em \curso, pela \universidade - UNIVASF.
+}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%% FIM %%%%%%%%%%%%%%%%%%%%%%%%%%% 
+
+% alterando o aspecto da cor azul.
+\definecolor{blue}{RGB}{41,5,195}
+
+% Configurações de aparência do PDF final.
+\makeatletter
+\hypersetup {
+	pdftitle		= {\@title},
+	pdfauthor		= {\@author},
+	pdfsubject      = {\imprimirpreambulo},
+	pdfcreator		= {LaTeX with abnTeX2},
+	pdfkeywords 	= {Geração Distribuída}{Biogás}{Biometano}{Energia Renovável}{Aterro Sanitário}{Créditos de Carbono}{Geração de Energia},
+	colorlinks		= true,			% false: boxed links; true: colored links
+	linkcolor		= blue,         % cor links internos.
+	citecolor		= blue,       	% cor links referencias bibliograficas.
+	filecolor		= magenta,		% cor links de arquivos.
+	urlcolor		= blue,			% Cor url.
+	bookmarksdepth	= 4
+}
+
+\makeatother
+
+% compila o sumário
+\makeindex
+
+% Altera as margens padrões
+\pagenumbering{arabic}
+
+\setlrmarginsandblock{3cm}{2cm}{*}
+\setulmarginsandblock{3cm}{2cm}{*}
+\checkandfixthelayout
+
+% Espaçamentos  entre linhas e parágrafos 
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.5cm}
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing
+
+\begin{document}
+
+	\selectlanguage{brazil}
+
+	% ELEMENTOS PRE-TEXTUAIS
+
+	\pretextual
+
+	% Capa
+	\include{elementos-pretextuais/capa}
+	
+	% Folha de Rosto
+	\include{elementos-pretextuais/folhaderosto}
+	
+	% Termo de conformidade
+	\include{elementos-pretextuais/Termo}
+	
+	% Declaração de orientação
+	\include{elementos-pretextuais/Declaracao}
+	
+	% Lista de Figuras
+	
+	\renewcommand*\listfigurename{Lista de Figuras}
+	\listoffigures*
+	\cleardoublepage	
+	
+	% Lista de Tabelas
+	\renewcommand*\listtablename{Lista de Tabelas}
+	\listoftables*
+	\cleardoublepage
+
+	% Índice (Sumário)
+	\tableofcontents*
+	\cleardoublepage
+	
+	%%%%%%%%%%%%%%%%%%% ELEMENTOS TEXTUAIS %%%%%%%%%%%%%%%%
+	
+	%\include{elementos-pretextuais/Resumo} %retire o comentário para inserir
+	
+	\setcounter{page}{1}
+	
+	\textual
+	% Arquivos para compilação separada
+	\include{elementos-textuais/Introducao}
+    \include{elementos-textuais/Justificativa}
+    \include{elementos-textuais/Objetivos}
+    \include{elementos-textuais/Metodologia}
+
+	
+	%%%%%%%%%%% ELEMENTOS POS-TEXTUAIS %%%%%%%%%%%
+	\postextual
+	% Considerações finais
+	% \thispagestyle{empty}
+
+	% Referências
+	\chapterstyle{abnt}
+	\bibliographystyle{abntex2-alf}
+	\bibliography{bibliografia}
+
+	%Apêndice
+	%\appendix
+	 
+	%%%%%%%%%%%%%%%%%% FIM %%%%%%%%%%%%%%%%
+	 
+	%%%%%%%%%%% INDICE REMISSIVO %%%%%%%%%%%
+    \phantompart
+    \printindex
+    %%%%%%%%%%%%%%%%%%% FIM %%%%%%%%%%%%%%%%
+
+\end{document}
